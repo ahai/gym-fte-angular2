@@ -1,0 +1,38 @@
+<h4>5. Person Template-Driven Form</h4>
+<form #personForm="ngForm" (ngSubmit)="onFormSubmit(personForm)">  
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Name" 
+      name="name" 
+      required
+      ngModel
+      #name="ngModel"
+      [errorStateMatcher]="esMatcher">
+      <mat-error *ngIf="name.hasError('required')">
+        Name is required.
+      </mat-error>
+    </mat-form-field>  
+  </div>
+  <div>
+    <mat-form-field>
+      <textarea matInput 
+          placeholder="Address" 
+          name="address" 
+          required
+          maxlength="100"
+          ngModel
+          #address="ngModel"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="2"
+          cdkAutosizeMaxRows="4"          
+          [errorStateMatcher]="esMatcher">
+      </textarea>
+      <mat-error *ngIf="address.hasError('required')">
+        Comment is required.
+      </mat-error>
+    </mat-form-field>
+  </div>  
+  <div>   
+      <button mat-raised-button>Submit</button>
+  </div>  
+</form>
